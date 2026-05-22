@@ -756,7 +756,7 @@ ul.dry .year {
   font-style: italic;
 }
 
-/* Keyword chips */
+/* Keyword chips (현재 사용 안 함 — 호환 위해 유지) */
 .keyword-row {
   display: flex;
   justify-content: center;
@@ -772,6 +772,44 @@ ul.dry .year {
   font-weight: 700;
   font-size: 26px;
   letter-spacing: 0.02em;
+}
+
+/* Demo link — 슬라이드 안 한 줄짜리 외부 데모 링크 */
+.demo-link {
+  text-align: center;
+  font-size: 24px;
+  margin: 24px 0 12px;
+  color: var(--fg-dim);
+  letter-spacing: 0.02em;
+}
+.demo-link a {
+  display: inline-block;
+  padding: 8px 22px;
+  margin-left: 10px;
+  background: rgba(124, 197, 255, 0.10);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.demo-link a:hover { background: rgba(124, 197, 255, 0.18); }
+
+/* Space Sync 슬라이드 — 하단 한 줄 tagline */
+.space-sync-tagline {
+  font-size: 36px;
+  text-align: center;
+  margin: 48px 0 0;
+  color: #ddd;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+.space-sync-tagline strong {
+  background: linear-gradient(90deg, var(--accent), var(--accent-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
 }
 
 /* Built vs unBuilt */
@@ -1051,6 +1089,69 @@ ul.dry .year {
 }
 .xor-conclusion .t-and { color: var(--accent); font-weight: 700; }
 .xor-conclusion .t-xor { color: var(--accent-2); font-weight: 700; }
+
+/* ============================================================
+   슬라이드 15 — Naver D2SF / Project SS (좌 텍스트 + 우 이미지 2장)
+   ============================================================ */
+.d2sf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-top: 24px;
+}
+.d2sf-row .story-line { font-size: 26px; }
+.d2sf-row .story-line p { margin: 14px 0; line-height: 1.5; }
+.d2sf-row .story-line .highlight { font-size: 32px; }
+.d2sf-row .story-line .big-quote { font-size: 42px; margin: 24px 0; }
+.d2sf-row .story-line .lead-em { font-size: 24px; margin-top: 24px; }
+
+.image-pair {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+}
+.image-pair img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   슬라이드 16 — 머릿속의 지향점 (좌 한 문장 + 우 이미지 2장)
+   ============================================================ */
+.intent-row {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 36px;
+}
+.intent-text { display: flex; align-items: center; height: 100%; }
+.intent-line {
+  font-size: 64px !important;
+  text-align: left !important;
+  margin: 0;
+  line-height: 1.25;
+}
+.intent-images {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 22px;
+  align-items: center;
+  justify-items: center;
+}
+.intent-images img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.5);
+}
 
 /* ============================================================
    PRINT / PDF

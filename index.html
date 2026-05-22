@@ -256,15 +256,44 @@
     <!-- 5. Igloo -->
     <!-- ============================================================ -->
     <section data-background-color="#0a0a0a">
-      <h2 class="section-title">Igloo — 지금의 voidbox가 있게 한 첫 프로젝트</h2>
+      <h2 class="section-title">Igloo — voidbox 가 있게 한 첫 프로젝트</h2>
+
       <div class="igloo-flow">
-        <div class="flow-node">Rhino<br><small>(설계)</small></div>
+        <div class="flow-node">
+          <div class="node-head">Rhino<br><small>(설계)</small></div>
+          <ul class="node-tasks">
+            <li>모델링 작업</li>
+            <li>C# 플러그인</li>
+            <li>.glb 변환</li>
+            <li>Project / Room / Issue / Message</li>
+            <li>Package Manager 배포</li>
+          </ul>
+        </div>
         <div class="flow-arrow">→</div>
-        <div class="flow-node">Server<br><small>(중계 · 변환)</small></div>
+        <div class="flow-node">
+          <div class="node-head">Server<br><small>(중계 · 변환)</small></div>
+          <ul class="node-tasks">
+            <li>Python FastAPI</li>
+            <li>회원가입 / 로그인</li>
+            <li>결제</li>
+            <li>DB</li>
+            <li>Rhino — glb — Unity 좌표 변환</li>
+          </ul>
+        </div>
         <div class="flow-arrow">→</div>
-        <div class="flow-node">Meta Quest<br><small>(체험)</small></div>
+        <div class="flow-node">
+          <div class="node-head">Meta Quest<br><small>(체험)</small></div>
+          <ul class="node-tasks">
+            <li>Unity</li>
+            <li>메타 호라이즌 앱스토어 배포</li>
+            <li>Meta Quest 기기 대응</li>
+            <li>Project / Room / Issue / Message</li>
+            <li>다중 접속 사용자</li>
+          </ul>
+        </div>
       </div>
-      <ul class="dot-list">
+
+      <ul class="dot-list igloo-bullets">
         <li>이 자리에 계신 <strong>이신후 대표님</strong> 덕분에 시작된 프로젝트</li>
         <li>처음으로 <strong>이걸로 돈을 벌어보는 경험</strong></li>
         <li>혼자 다 할 수 없어서, 저와 CTO 외에 두 명의 Unity 개발자와 협업</li>
@@ -272,7 +301,9 @@
       </ul>
 
       <aside class="notes">
-        이 슬라이드는 voidbox 창업의 직전 단계. 이신후 대표님이 청중에 계실 수도 있다는 점을 활용해 살짝 인사.
+        Rhino / Server / Meta Quest 세 축이 동시에 굴러갔어야 했던 프로젝트.
+        각 컬럼은 한 사람이 다 못 잡는 분량 — 그래서 협업이 시작됐고, 그 협업이 회사로 이어졌다.
+        이신후 대표님이 청중에 계실 수도 있다는 점을 활용해 살짝 인사.
         "하나의 협업이 하나의 회사가 되더라" 라는 메시지로 다음 슬라이드로 자연스럽게.
       </aside>
     </section>
@@ -282,16 +313,65 @@
     <!-- ============================================================ -->
     <section data-background-color="#0a0a0a">
       <h2 class="section-title">AND가 되고 싶은 XOR</h2>
-      <div class="quote-block">
-        <p class="dictionary-tag">주변인 (周邊人)</p>
-        <p class="dictionary-def">"둘 이상의 이질적인 사회나 문화에 동시에 속해 있으면서도 그 경계에 위치하여 어느 한 곳에서도 완전히 소속되지 못하고 심리적 갈등이나 불안정을 느끼는 사람."</p>
+
+      <div class="gate-grid">
+        <div class="gate-card">
+          <div class="gate-name">AND</div>
+          <table class="truth-table">
+            <tr><th>a</th><th>b</th><th>out</th></tr>
+            <tr><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>0</td><td>1</td><td>0</td></tr>
+            <tr><td>1</td><td>0</td><td>0</td></tr>
+            <tr><td>1</td><td>1</td><td class="hit-and">1</td></tr>
+          </table>
+        </div>
+
+        <div class="gate-card">
+          <div class="gate-name">OR</div>
+          <table class="truth-table">
+            <tr><th>a</th><th>b</th><th>out</th></tr>
+            <tr><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>0</td><td>1</td><td>1</td></tr>
+            <tr><td>1</td><td>0</td><td>1</td></tr>
+            <tr><td>1</td><td>1</td><td>1</td></tr>
+          </table>
+        </div>
+
+        <div class="gate-card hl-card">
+          <div class="gate-name">XOR</div>
+          <table class="truth-table">
+            <tr><th>a</th><th>b</th><th>out</th></tr>
+            <tr><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>0</td><td>1</td><td class="hit-xor">1</td></tr>
+            <tr><td>1</td><td>0</td><td class="hit-xor">1</td></tr>
+            <tr><td>1</td><td>1</td><td>0</td></tr>
+          </table>
+        </div>
+
+        <div class="gate-card">
+          <div class="gate-name">NOT</div>
+          <table class="truth-table">
+            <tr><th>in</th><th></th><th>out</th></tr>
+            <tr><td>0</td><td>→</td><td>1</td></tr>
+            <tr><td>1</td><td>→</td><td>0</td></tr>
+            <tr><td colspan="3" class="placeholder">&nbsp;</td></tr>
+            <tr><td colspan="3" class="placeholder">&nbsp;</td></tr>
+          </table>
+        </div>
       </div>
-      <p class="lead-em">군대 다녀와서 건축을 시작한 이후로 10년 — <strong>주변인</strong>이라는 단어만큼 제 마음을 잘 설명하는 단어를 아직 못 만났습니다.</p>
-      <p class="big-line">마치 — <strong>AND가 되고 싶은 XOR</strong> 같은 기분이랄까요.</p>
+
+      <p class="xor-conclusion">
+        두 영역을 동시에 1로 만드는 <strong class="t-and">AND</strong> 를 원했지만 —
+        실제 행동은 <strong class="t-xor">XOR</strong> 에 가까웠어요.
+      </p>
 
       <aside class="notes">
-        이 슬라이드는 강의 전체에서 가장 개인적인 부분. 톤을 한 단계 낮추고 천천히.
-        "이건 아무데서도 쉽게 얘기하기 어려운 주제인데, 커뮤니티가 커뮤니티인지라 조심스레 꺼내봅니다."
+        진리표를 같이 보면서 — AND 는 (1,1) 일 때만 1, 즉 양쪽 모두 잘하고 있을 때만 1.
+        XOR 는 한쪽이 1이고 다른 쪽이 0 일 때만 1 — 한쪽에만 몰두할 때만 1이 떠요. 둘 다 잘하면 오히려 0.
+
+        건축과 CS 두 영역 모두에서 의미있고 재밌는 일들을 많이 하고 싶었는데, 정작 지금까지 해오던 건 — CS 만 열심히, 건축만 열심히 였던 게 아닐까? 하고 혼자 생각을 많이 하게 됐어요. 실제로 그런 행동들도 많이 해왔구요.
+
+        "두 학문을 왔다갔다하며 융합의 길을 찾는다" 라는 목표는 AND 의 (1,1) 자리인데, 내 일상의 결과는 자꾸 XOR 의 (0,1) 또는 (1,0) 자리에 가 있더라 — 라는 자기 진단으로 마무리.
       </aside>
     </section>
 
@@ -301,7 +381,7 @@
         <p>제가 컴퓨터를 전공했다고 하면, 사람들은 제 설계가</p>
         <p class="highlight">"파도가 굽이치는 파라메트릭 디자인"</p>
         <p>일 거라고 생각하더라구요.</p>
-        <p>그래서 괜히 더 청개구리 심보로 — 악착같이 <strong>Grasshopper를 외면</strong>하고 사용하지 않기도 했어요. ㅋㅋ</p>
+        <p>그래서 괜히 더 청개구리 심보로 — 악착같이 <strong>Grasshopper를 외면</strong>하고 사용하지 않기도 했어요.</p>
         <p class="footnote">남들이 짐을 지웠다기보다는, 혼자 괜히 찔려서 그랬을지도 모릅니다.</p>
       </div>
 
@@ -312,13 +392,14 @@
     </section>
 
     <section data-background-color="#0a0a0a" class="bridge">
-      <h2 class="section-title">고민의 끝에서 — voidbox</h2>
-      <p class="bridge-line">직장을 그만두고 <strong>voidbox</strong>라는 회사를 시작하고 나니,</p>
-      <p class="bridge-line">우리 회사의 정체성이 결국 — <strong>이 고민의 끝에서 나온 결과물</strong>이 아닐까, 라고 생각해 봅니다.</p>
-      <p class="bridge-line bridge-cta">이제부터는 회사 이야기를 해볼게요. →</p>
+      <p class="bridge-line">
+        우리 회사의 정체성과 방향성은, 결국
+        <strong>제가 살아오던 과정에서 나오던 생각들과 고민들</strong>에서
+        나온 결과물이 아닐까 하고 생각해 봅니다.
+      </p>
 
       <aside class="notes">
-        Part 1 (개인 스토리, 약 30분) 마무리. 한 호흡 깊게 두고 Part 2로 넘어간다.
+        Part 1 (개인 스토리) 마무리. 한 호흡 깊게 두고 — "이제부터는 회사 이야기를 해볼게요." 정도의 발화로 Part 2 로 자연스럽게 전환.
       </aside>
     </section>
 
@@ -327,11 +408,9 @@
     <!-- ============================================================ -->
     <section data-background-color="#111122" class="part-cover">
       <h1 class="part-title">Part 2.<br>주식회사 보이드박스</h1>
-      <p class="part-sub">— 열심히 실패하는 중입니다 —</p>
 
       <aside class="notes">
         Part 2 시작. 약 60분. 회사 이야기 — 시작, 좌절, 피벗, 그리고 지금 가고 있는 길.
-        톤은 "열심히 실패하는 중" 이라는 솔직한 한 줄로 잡고 들어간다.
       </aside>
     </section>
 
@@ -726,6 +805,34 @@
     // 세로 가운데 정렬 OFF — 제목 위치를 모든 슬라이드에서 동일하게 고정하기 위해
     center: false,
     plugins: [ RevealNotes, RevealHighlight, RevealMarkdown ]
+  });
+
+  // -----------------------------------------------------------------
+  // 이미지 클릭 시 전체 화면 확대 — 슬라이드 안의 모든 <img> 에 적용.
+  // 제외하려면 해당 img 에 class="no-zoom" 을 달면 됨.
+  // 닫기: 오버레이 클릭 또는 ESC.
+  // -----------------------------------------------------------------
+  function openImageZoom(src, alt) {
+    const overlay = document.createElement('div');
+    overlay.className = 'image-zoom-overlay';
+    const big = document.createElement('img');
+    big.src = src;
+    big.alt = alt || '';
+    overlay.appendChild(big);
+    const close = () => {
+      overlay.remove();
+      document.removeEventListener('keydown', onKey);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    overlay.addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(overlay);
+  }
+  document.querySelectorAll('.reveal .slides img:not(.no-zoom)').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openImageZoom(img.src, img.alt);
+    });
   });
 </script>
 </body>

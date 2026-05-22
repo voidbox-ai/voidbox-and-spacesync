@@ -705,6 +705,53 @@ ul.dry .year {
   text-align: center;
 }
 
+/* 마지막 슬라이드 — 이메일 + 링크 4개 */
+.closing-email {
+  font-size: 32px;
+  color: #fff;
+  margin: 12px 0 44px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+.closing-links,
+.reveal .closing-links {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+}
+.closing-links li,
+.reveal .closing-links li {
+  list-style: none !important;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 36px;
+  font-size: 26px;
+  align-items: baseline;
+  padding-left: 0;
+  margin: 0;
+}
+.closing-links li::marker { content: ''; }
+.closing-links li::before { content: none; }
+.closing-links .cl-label {
+  color: var(--fg-dim);
+  text-align: right;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.closing-links a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.closing-links a:hover { text-decoration: underline; }
+
 /* ============================================================
    SLIDE NUMBER
    ============================================================ */
@@ -945,6 +992,23 @@ ul.dry .year {
 .cm-tag.alt { color: var(--accent-2); background: rgba(255,184,107,0.12); }
 .cm-def { font-size: 20px; line-height: 1.45; }
 .cm-def em { color: var(--fg-dim); font-style: italic; }
+
+/* 대형 모형 슬라이드 — 세로형 이미지 두 장 가로 배치 */
+.model-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+}
+.model-pair img {
+  width: 100%;
+  max-height: 680px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.5);
+}
 
 /* Exhibition — 4장 이미지 2x2 grid */
 .exhibition-images {

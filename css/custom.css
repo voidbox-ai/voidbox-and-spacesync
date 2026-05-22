@@ -81,16 +81,19 @@
    Slide layout — 16:9, fixed title row
    ============================================================ */
 
-/* 모든 슬라이드 공통: 1920×1080 영역, padding, overflow 차단 */
+/* 모든 슬라이드 공통: 1920×1080 박스로 강제 — !important 로 reveal.js 가
+   inline style 로 박는 height 보다 우선하도록. 이게 없으면 컨테이너 height 이
+   컨텐츠 높이만큼만 잡혀서 flex 의 justify-content:center 가 "슬라이드 정중앙"
+   으로 작동하지 못한다 (컨텐츠가 슬라이드 위쪽에 붙어 보임). */
 .reveal .slides > section,
 .reveal .slides > section > section {
   box-sizing: border-box !important;
-  width: var(--slide-w);
-  min-height: var(--slide-h);
-  padding: var(--pad-y) var(--pad-x);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  width: var(--slide-w) !important;
+  height: var(--slide-h) !important;
+  padding: var(--pad-y) var(--pad-x) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* ----- 일반 슬라이드 (content slide) — 제목 상단 고정, 본문은 좌측 정렬 ----- */
@@ -116,18 +119,16 @@
 }
 
 /* ----- Centered slides (cover / part / qna / closing / bridge) ----- */
+/* 슬라이드 박스 자체는 위에서 1920×1080 으로 강제됨.
+   여기서는 그 박스 안의 자식 정렬 (수직·수평 가운데) 만 담당. */
 .reveal .slides > section.cover,
 .reveal .slides > section.part-cover,
 .reveal .slides > section.qna,
 .reveal .slides > section.closing,
 .reveal .slides > section.bridge {
-  /* 슬라이드 영역 (1920×1080) 을 꽉 채워야 flex의 justify-content:center 가
-     "슬라이드 정중앙" 으로 작동한다. min-height 만으로는 reveal 의 absolute
-     positioning 안에서 컨테이너가 컨텐츠 만큼만 늘어나 위쪽으로 치우쳐 보인다. */
-  height: var(--slide-h);
-  justify-content: center;
-  align-items: center;     /* flex cross-axis: 자식 가로 가운데 정렬 */
-  text-align: center;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 
 /* centered 슬라이드의 자식: 전체 공간을 차지하되 내부 텍스트는 가운데 */

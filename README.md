@@ -1,6 +1,6 @@
 # voidbox-and-spacesync
 
-CBAS 커뮤니티 발표 — **융합인재, 그리고 voidbox 이야기** (2026.05.23)
+CBAS 커뮤니티 발표 — **공간동기화를 향한 voidbox의 여정** (2026.05.23)
 
 reveal.js 기반 단일 페이지 슬라이드. GitHub Pages 로 그대로 배포 가능.
 

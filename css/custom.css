@@ -227,43 +227,26 @@ ul.dry .year {
 }
 
 /* ============================================================
-   CARD (명함)
+   BUSINESS CARD (명함) — PNG 두 장 그대로 표시
+   강사 소개 슬라이드 안에서 학력/경력 grid 아래쪽에 놓이는 용도.
    ============================================================ */
 .card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  margin: 12px 0;
+  gap: 64px;
+  margin: 56px auto 0;          /* 위쪽 학력/경력 grid 와의 간격 */
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  max-width: 1720px;
 }
-.card-face {
-  background: linear-gradient(135deg, #181830, #0d0d18);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 44px 48px;
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-}
-.card-label {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.18em;
-}
-.card-content { margin-top: auto; }
-.card-name { font-size: 30px; font-weight: 700; margin: 0 0 8px 0; }
-.card-role { color: var(--fg-dim); font-size: 22px; margin: 0 0 12px 0; }
-.card-contact { font-size: 20px; color: var(--accent); margin: 0; letter-spacing: 0.02em; }
-.card-tag {
-  position: absolute;
-  top: 36px; right: 40px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--fg-dim);
-  opacity: 0.6;
-  letter-spacing: 0.05em;
+.card-image {
+  width: 100%;
+  max-width: 880px;             /* 키움 (이전 820 → 880) */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 18px 44px rgba(0,0,0,0.5);
+  display: block;
 }
 
 /* ============================================================

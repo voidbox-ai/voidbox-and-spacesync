@@ -1,0 +1,24 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="voidbox logo">
+  <defs>
+    <linearGradient id="vbTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#cfcfcf" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="vbLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9a9a9a"/>
+      <stop offset="100%" stop-color="#3a3a3a"/>
+    </linearGradient>
+    <linearGradient id="vbRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6e6e6e"/>
+      <stop offset="100%" stop-color="#1d1d1d"/>
+    </linearGradient>
+  </defs>
+  <!-- Isometric cube — temporary stand-in for the official voidbox logo.
+       Swap this file with the real brand asset and the card slide picks it up automatically. -->
+  <polygon points="50,8  86,28  50,48  14,28" fill="url(#vbTop)"/>
+  <polygon points="14,28 50,48 50,92 14,72" fill="url(#vbLeft)"/>
+  <polygon points="86,28 50,48 50,92 86,72" fill="url(#vbRight)"/>
+  <!-- subtle bevel lines -->
+  <polyline points="50,8 50,48 50,92" fill="none" stroke="#000" stroke-opacity="0.25" stroke-width="0.8"/>
+  <polyline points="14,28 50,48 86,28" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="0.8"/>
+</svg>

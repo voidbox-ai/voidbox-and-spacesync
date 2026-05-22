@@ -399,35 +399,71 @@ ul.dry .year {
 .lead { font-size: 30px; color: var(--fg-dim); margin: 0 0 12px 0; }
 
 /* ============================================================
-   DX GRID
+   삼우 DX 시리즈 — 3장 (Revit / AI·LLM / APS)
    ============================================================ */
-.dx-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 24px;
-}
-.dx-item {
-  background: #14141a;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px 28px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.dx-label {
+.dx-slide .section-title .slide-idx {
   font-size: 24px;
-  font-weight: 700;
-  color: var(--accent);
-  background: rgba(124, 197, 255, 0.10);
-  padding: 10px 18px;
-  border-radius: 8px;
-  min-width: 110px;
-  text-align: center;
+  color: var(--fg-dim);
+  font-weight: 500;
   letter-spacing: 0.04em;
+  margin-left: 14px;
 }
-.dx-item p { font-size: 22px; margin: 0; line-height: 1.45; }
+.dx-lead {
+  font-size: 32px;
+  color: var(--fg-dim);
+  margin: 12px 0 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.dx-lead em {
+  color: #fff;
+  font-style: normal;
+  font-weight: 700;
+}
+.dx-focus {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.dx-keyword {
+  font-size: 128px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0;
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dx-desc {
+  font-size: 36px;
+  color: #f0f0f0;
+  margin: 32px 0 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.dx-points {
+  margin: 36px 0 0;
+}
+.dx-point {
+  font-size: 32px;
+  color: #f0f0f0;
+  margin: 0 0 14px 0;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.dx-point-ex {
+  font-size: 24px;
+  color: var(--fg-dim);
+  margin: -4px 0 26px 0;
+  padding-left: 28px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.dx-point strong { color: var(--accent); font-weight: 700; }
 
 /* ============================================================
    IGLOO FLOW

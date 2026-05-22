@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS / temp
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node / build artifacts (현재 사용 안 하지만 미래 대비)
+node_modules/
+dist/
+*.log
+
+# 강의 준비 단계에서 PPTX/PDF 에서 자동 추출한 참고용 이미지들.
+# 슬라이드에 실제 삽입한 이미지는 assets/ 직속에 배치해서 git에 포함.
+assets/hongdae_pptx/
+assets/seminar_pdf/
+
+# 로컬 빌드 캐시
+.cache/
+.parcel-cache/

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1280, initial-scale=1.0">
+  <title>융합인재, 그리고 voidbox 이야기 — 노혁진</title>
+
+  <!-- reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <!-- Black theme as base; we override with custom CSS below -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <!-- Code highlight -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+
+  <!-- Pretendard — only font used throughout the deck -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+
+  <!-- Custom theme overrides -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ============================================================ -->
+    <!-- 0. 표지 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a" class="cover">
+      <h1 class="title">융합인재,<br>그리고 voidbox 이야기</h1>
+      <p class="subtitle">— 그래픽스 강의가 아니어서 죄송합니다 —</p>
+      <p class="meta">노혁진 · voidbox · 2026.05.23 · CBAS</p>
+
+      <aside class="notes">
+        원래는 컴퓨터 그래픽스에 대한 강의를 해보는게 어떨까 라고 저를 초대해주신 이신후 대표님과 이야기가 되었고, 그렇게 여기 모이신 분들을 모집한 것으로 알고 있어요.
+        그런데, CBAS라는 커뮤니티를 몇 달간 관찰해 보니까 여러분들에게 제가 할수있는 이야기는 computer science 학부 수준의 컴퓨터 그래픽스 강의가 아닌 것 같았어요.
+        그래픽스 강의를 기대하신 분이 있다면 정말 죄송하지만 환불해드릴게요. 어차피 무료강의니까 환불 받았다치고 계속 앉아서 들어보셔도 좋을 것 같아요.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 1. 강사 소개 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">강사 소개</h2>
+      <div class="profile-grid">
+        <div class="profile-col">
+          <h3>학력</h3>
+          <ul class="dry">
+            <li><span class="year">[학부]</span> 컴퓨터공학 · 건축공학 복수전공</li>
+            <li><span class="year">[석사]</span> 건축이론 — 교도소 설계 및 수용정원 추정 연구</li>
+            <li><span class="year">[박사 재학]</span> (학교/세부 — 직접 채워주세요)</li>
+          </ul>
+        </div>
+        <div class="profile-col">
+          <h3>경력</h3>
+          <ul class="dry">
+            <li>삼우설계 DX팀 — Revit Addin, 이미지 생성 AI, LLM, Autodesk APS 활용 프로젝트</li>
+            <li>Igloo 프로젝트 — Rhino × Server × Meta Quest 연동</li>
+            <li>현재: <strong>voidbox</strong> 창업 · 대표</li>
+          </ul>
+        </div>
+      </div>
+      <p class="footnote">백준에서 알고리즘 풀던 학생, 군대에서 도면을 그리던 병사, 교도소 설계로 석사를 받은 연구자, 그리고 지금은 3D Gaussian Splatting 회사를 운영하는 창업가.</p>
+
+      <aside class="notes">
+        무미건조하게 소개. 청중이 한 번 흐름을 잡을 수 있도록 학력→경력 순서로 빠르게 읽어준다. 디테일은 다음 슬라이드들에서 풀어나간다.
+        (각 항목의 정확한 연도/학교명은 강의 직전에 강사가 직접 채워서 발화)
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2. 명함 (앞/뒷면) -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">명함</h2>
+      <div class="card-grid">
+        <div class="card-face">
+          <div class="card-label">FRONT</div>
+          <div class="card-content">
+            <p class="card-name">노혁진 / Hyeogjin Noh</p>
+            <p class="card-role">voidbox · Founder</p>
+            <p class="card-contact">hyeogjin.noh@voidbox.ai</p>
+          </div>
+          <div class="card-tag">[명함 앞면 이미지 자리]</div>
+        </div>
+        <div class="card-face">
+          <div class="card-label">BACK</div>
+          <div class="card-content">
+            <p class="card-name">voidbox</p>
+            <p class="card-role">Spatial Capture × XR × Digital Twin</p>
+            <p class="card-contact">voidbox.ai</p>
+          </div>
+          <div class="card-tag">[명함 뒷면 이미지 자리]</div>
+        </div>
+      </div>
+      <p class="footnote">이걸 슬라이드에 넣어둔 이유는 — 명함이 다 떨어져서 나중에 교환이 어려울 것 같아서요.</p>
+
+      <aside class="notes">
+        가볍게 웃으면서 진행. "혹시 나중에 명함이 필요하시면 이 슬라이드를 사진 찍어두세요" 정도의 농담도 가능.
+        (실제 명함 이미지가 있다면 .card-tag 자리를 &lt;img&gt;로 교체)
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 1: 융합인재란 뭘까 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#111122" class="part-cover">
+      <h1 class="part-title">Part 1.<br>융합인재란 뭘까</h1>
+      <p class="part-sub">— 어쩌다 건축을, 어쩌다 프로그래밍을 —</p>
+
+      <aside class="notes">
+        파트 전환. 호흡 한 번 끊고, 청중을 자기 이야기로 끌어들이는 질문을 던지러 들어간다.
+      </aside>
+    </section>
+
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">서로에게 같은 질문</h2>
+      <div class="two-col-q">
+        <div class="q-block">
+          <p class="q-tag">사람들이 저한테</p>
+          <p class="q-text">"어쩌다 건축을<br>복수전공 하셨어요?"</p>
+        </div>
+        <div class="vs">↔</div>
+        <div class="q-block">
+          <p class="q-tag">제가 여러분에게</p>
+          <p class="q-text">"어쩌다 프로그래밍에<br>관심을 갖게 되셨어요?"</p>
+        </div>
+      </div>
+      <ul class="reason-list">
+        <li>지금 하는 일이 마음에 안 들어서</li>
+        <li>자동화로 좀 더 편해지고 싶어서</li>
+        <li>결과물이 멋있어 보여서</li>
+        <li>코딩하는 내 모습을 3인칭으로 상상하면 멋있어 보여서</li>
+      </ul>
+
+      <aside class="notes">
+        대칭을 보여준다. "왜 건축을?" 과 "왜 프로그래밍을?" 은 사실 같은 질문이다.
+        청중에게 짧게 손을 들어보게 해도 좋음 — "마지막 이유에 손드시는 분 있으세요?" 정도.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2. 건축공학을 복수전공하게 된 이유 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">왜 건축공학을 복수전공했는가</h2>
+      <div class="story-line">
+        <p>군대에 가면, 시간이 엄청나게 많아집니다.</p>
+        <p>휴대폰은 못 쓰고, 훈련소에선 누워서 잠도 못 자게 했어요.</p>
+        <p>그래서 시작한 게 —</p>
+        <p class="highlight">"내가 나중에 돈을 많이 벌면 이런 집을 짓고 살아야지~"</p>
+        <p>편지지에 도면을 그리기 시작했습니다.</p>
+      </div>
+      <div class="image-row">
+        <div class="img-placeholder"><span>[훈련소 편지지<br>도면 사진 1]</span></div>
+        <div class="img-placeholder"><span>[훈련소 편지지<br>도면 사진 2]</span></div>
+        <div class="img-placeholder"><span>[훈련소 편지지<br>도면 사진 3]</span></div>
+      </div>
+
+      <aside class="notes">
+        "이미지 한창 첨부" — 실제 도면 그림이 있다면 image-row를 채운다. 가능하면 3-5장.
+        톤은 회상하듯 천천히. "지금은 스마트폰 쓸 수 있다고 들었는데..." 부분은 청중 반응 보면서 농담처럼.
+      </aside>
+    </section>
+
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">옆자리 동기의 한 마디</h2>
+      <div class="story-line">
+        <p>훈련소에서 제 옆자리 동기는 실업계 고등학교를 나와 일을 하던 친구였어요.</p>
+        <p>자격증도 있었습니다 — <em>전산응용건축제도기능사</em>.</p>
+        <p>저는 자신만만하게 도면을 보여주고 물었어요.</p>
+        <p class="highlight">"이 집 어때? 잘 그린 것 같아?"</p>
+        <p>돌아온 대답은,</p>
+        <p class="big-quote">"이건 너도 나도 할 수 있는 일이 아니야."</p>
+      </div>
+
+      <aside class="notes">
+        이 장면이 인생의 첫 전환점. 잠시 침묵을 두고 청중이 그 문장을 받게 한다.
+        "이 한마디가 저를 건축으로 끌고 갔어요" 같은 한 줄로 마무리.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3. 대학원으로의 진학 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">대학원으로의 진학</h2>
+      <div class="story-line">
+        <p>건축학과 학생들만큼은 아니어도, 몇 차례의 스튜디오 수업과 이론 수업들을 듣고 졸업했습니다.</p>
+        <p>여기서 다시 <em>"하면 된다"</em> 정신이 발휘되었는지 — 이젠 건축으로 끝을 봐야겠더라구요.</p>
+        <p>대학원에 갑니다.</p>
+      </div>
+      <div class="card-row">
+        <div class="info-card">
+          <h4>석사 연구 주제</h4>
+          <p>감소하는 인구에 맞춰 범죄자 수를 추정하고,<br>
+          <strong>교도소·구치소 수용정원을 어떤 순서·어떻게 줄일 것인가</strong>를 다룬 연구로 졸업.</p>
+        </div>
+        <div class="info-card">
+          <h4>그 와중에도</h4>
+          <p>알고리즘 문제를 틈틈히 풀었어요.<br>
+          <strong>백준 랭킹을 적당히 유지하고 싶었거든요.</strong></p>
+        </div>
+      </div>
+
+      <aside class="notes">
+        교도소 설계 이야기는 청중에게 한 번 더 임팩트. "건축은 결국 사람을 어디에 가둘 것인가, 어디에 풀어둘 것인가를 결정하는 일이라는 생각이 있었어요" 같은 보강도 가능.
+        백준 이야기는 가볍게 — "융합이라는 단어를 의식하지 않았어도, 손은 양쪽을 계속 만지고 있었던 거죠."
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. 삼우설계 DX팀 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">삼우설계 DX팀에서의 경험</h2>
+      <p class="lead">박사 재학 중, 알던 후배에게 연락이 왔습니다 — "삼우에서 일해볼 생각 없냐."</p>
+      <div class="dx-grid">
+        <div class="dx-item">
+          <div class="dx-label">DX</div>
+          <p>Digital Transform —<br>디지털 전환에 대한 연구를 하던 팀</p>
+        </div>
+        <div class="dx-item">
+          <div class="dx-label">Revit</div>
+          <p>실무에 쓰이는<br>Revit Addin 개발</p>
+        </div>
+        <div class="dx-item">
+          <div class="dx-label">AI</div>
+          <p>이미지 생성 AI · LLM을<br>건축 워크플로우에 접목</p>
+        </div>
+        <div class="dx-item">
+          <div class="dx-label">APS</div>
+          <p>Autodesk Platform Service<br>(구 ACC · Forge) 활용 프로젝트</p>
+        </div>
+      </div>
+
+      <aside class="notes">
+        DX팀의 명함을 한 번에 보여주는 슬라이드. 각 항목은 30초 이내로 짧게.
+        "여기서 처음으로 '내가 만든 게 돈을 번다' 라는 감각을 배웠어요." 정도로 마무리.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. Igloo -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">Igloo — 지금의 voidbox가 있게 한 첫 프로젝트</h2>
+      <div class="igloo-flow">
+        <div class="flow-node">Rhino<br><small>(설계)</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Server<br><small>(중계 · 변환)</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Meta Quest<br><small>(체험)</small></div>
+      </div>
+      <ul class="dot-list">
+        <li>이 자리에 계신 <strong>이신후 대표님</strong> 덕분에 시작된 프로젝트</li>
+        <li>처음으로 <strong>이걸로 돈을 벌어보는 경험</strong></li>
+        <li>혼자 다 할 수 없어서, 저와 CTO 외에 두 명의 Unity 개발자와 협업</li>
+        <li>이 조각들이 모여 — <strong>회사 설립의 시작</strong>이 되었습니다</li>
+      </ul>
+
+      <aside class="notes">
+        이 슬라이드는 voidbox 창업의 직전 단계. 이신후 대표님이 청중에 계실 수도 있다는 점을 활용해 살짝 인사.
+        "하나의 협업이 하나의 회사가 되더라" 라는 메시지로 다음 슬라이드로 자연스럽게.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6. AND가 되고싶은 XOR -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">AND가 되고 싶은 XOR</h2>
+      <div class="quote-block">
+        <p class="dictionary-tag">주변인 (周邊人)</p>
+        <p class="dictionary-def">"둘 이상의 이질적인 사회나 문화에 동시에 속해 있으면서도 그 경계에 위치하여 어느 한 곳에서도 완전히 소속되지 못하고 심리적 갈등이나 불안정을 느끼는 사람."</p>
+      </div>
+      <p class="lead-em">군대 다녀와서 건축을 시작한 이후로 10년 — <strong>주변인</strong>이라는 단어만큼 제 마음을 잘 설명하는 단어를 아직 못 만났습니다.</p>
+      <p class="big-line">마치 — <strong>AND가 되고 싶은 XOR</strong> 같은 기분이랄까요.</p>
+
+      <aside class="notes">
+        이 슬라이드는 강의 전체에서 가장 개인적인 부분. 톤을 한 단계 낮추고 천천히.
+        "이건 아무데서도 쉽게 얘기하기 어려운 주제인데, 커뮤니티가 커뮤니티인지라 조심스레 꺼내봅니다."
+      </aside>
+    </section>
+
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">청개구리의 외면 — Grasshopper</h2>
+      <div class="story-line">
+        <p>제가 컴퓨터를 전공했다고 하면, 사람들은 제 설계가</p>
+        <p class="highlight">"파도가 굽이치는 파라메트릭 디자인"</p>
+        <p>일 거라고 생각하더라구요.</p>
+        <p>그래서 괜히 더 청개구리 심보로 — 악착같이 <strong>Grasshopper를 외면</strong>하고 사용하지 않기도 했어요. ㅋㅋ</p>
+        <p class="footnote">남들이 짐을 지웠다기보다는, 혼자 괜히 찔려서 그랬을지도 모릅니다.</p>
+      </div>
+
+      <aside class="notes">
+        가벼운 톤으로 자기-디스. 청중과 호흡을 한 번 풀어준다.
+        다음 슬라이드에서 "그 고민의 끝에 voidbox가 있다" 로 연결.
+      </aside>
+    </section>
+
+    <section data-background-color="#0a0a0a" class="bridge">
+      <h2 class="section-title">고민의 끝에서 — voidbox</h2>
+      <p class="bridge-line">직장을 그만두고 <strong>voidbox</strong>라는 회사를 시작하고 나니,</p>
+      <p class="bridge-line">우리 회사의 정체성이 결국 — <strong>이 고민의 끝에서 나온 결과물</strong>이 아닐까, 라고 생각해 봅니다.</p>
+      <p class="bridge-line bridge-cta">이제부터는 회사 이야기를 해볼게요. →</p>
+
+      <aside class="notes">
+        Part 1 (개인 스토리, 약 30분) 마무리. 한 호흡 깊게 두고 Part 2로 넘어간다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 2: 주식회사 보이드박스 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#111122" class="part-cover">
+      <h1 class="part-title">Part 2.<br>주식회사 보이드박스</h1>
+      <p class="part-sub">— 열심히 실패하는 중입니다 —</p>
+
+      <aside class="notes">
+        Part 2 시작. 약 60분. 회사 이야기 — 시작, 좌절, 피벗, 그리고 지금 가고 있는 길.
+        톤은 "열심히 실패하는 중" 이라는 솔직한 한 줄로 잡고 들어간다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-1. Naver D2SF — Project SS -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">Naver D2SF — Project SS</h2>
+      <div class="story-line">
+        <p>Igloo에서 다시 잡은 XR 개발 감각 — 그걸 들고 우리가 덤벼본 시장은,</p>
+        <p class="highlight">버추얼 스트리머 (버튜버) 시장이었어요.</p>
+        <p>네이버 <strong>D2 Startup Factory</strong>에 투자 제안을 했고,</p>
+        <p class="big-quote">대차게 까였습니다.</p>
+        <p>하지만 여기서 얻은 게 있었어요 —</p>
+        <p class="lead-em"><strong>어렴풋이 정의만 해두었던 머릿속의 지향점</strong>을, 이제 <strong>말로 설명</strong>할 수 있게 됐다는 것.</p>
+      </div>
+
+      <aside class="notes">
+        D2SF 까인 이야기는 청중과의 거리감을 한 번 더 좁히는 장면. "투자 까인 게 자산이었다" 톤으로 가볍게.
+        다음 슬라이드에서 그 '지향점' 이 무엇이었는지 풀어낸다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-2. 정합성 질문 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">머릿속의 지향점, 한 문장으로</h2>
+      <p class="big-line" style="font-size: 1.5em; margin-top: 2em;">현실공간과 가상공간을<br>높은 정합성으로 겹쳐둘 순 없을까?</p>
+      <div class="image-row" style="margin-top: 2em;">
+        <div class="img-placeholder"><span>[기묘한 이야기 —<br>거꾸로 세계 이미지 1]</span></div>
+        <div class="img-placeholder"><span>[기묘한 이야기 —<br>거꾸로 세계 이미지 2]</span></div>
+        <div class="img-placeholder"><span>[현실 ∥ 가상<br>겹쳐진 비주얼]</span></div>
+      </div>
+
+      <aside class="notes">
+        "기묘한 이야기" 비유로 청중의 시각화를 도와준다. 거꾸로 세계처럼, 두 공간이 정확히 겹쳐 있는 상태 —
+        그게 가능하면 무엇이 가능할까? 라는 호기심을 한 번 흘려보낸다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-3. 공간동기화 정의 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">공간동기화 (Space Sync)</h2>
+      <p class="lead">메타버스도, 디지털 트윈도 아닌 — 또 다른 무언가</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="compare-tag">Metaverse</div>
+          <p class="compare-rel">현실 ↔ <strong>대안 공간</strong></p>
+        </div>
+        <div class="compare-card">
+          <div class="compare-tag">Digital Twin</div>
+          <p class="compare-rel">현실 → <strong>거울 공간</strong></p>
+        </div>
+        <div class="compare-card highlight-card">
+          <div class="compare-tag">Space Sync</div>
+          <p class="compare-rel">현실 <strong>∥</strong> 가상</p>
+          <p class="compare-sub">— 인과적 결합 —</p>
+        </div>
+      </div>
+      <div class="keyword-row">
+        <span class="keyword">양방향</span>
+        <span class="keyword">저지연</span>
+        <span class="keyword">통합</span>
+      </div>
+      <p class="footnote">"공간동기화는 두 공간 사이의 <em>인과적 결합 (causal coupling)</em> 이다." — voidbox</p>
+
+      <aside class="notes">
+        세 개념의 차이를 명확히. 메타버스는 대안적, 디지털 트윈은 일방향 거울, 공간동기화는 두 공간이 동시에 살아있는 상태.
+        "양방향·저지연·통합" 이라는 세 키워드를 청중이 받아 적을 수 있도록 천천히.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-4. Built vs unBuilt -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">공간동기화를 가능케 하는 기술</h2>
+      <p class="lead">세상에는 두 종류의 공간이 있는 것 같아요.</p>
+      <div class="builtvsunbuilt">
+        <div class="bvub-col">
+          <div class="bvub-tag">unBuilt</div>
+          <p class="bvub-name">지어지지 않은 공간</p>
+          <p class="bvub-sub">→ <strong>3D 모델링</strong>으로 가상공간을 만든다</p>
+          <p class="bvub-note">설계자가 매일 하는 일</p>
+        </div>
+        <div class="bvub-vs">∥</div>
+        <div class="bvub-col">
+          <div class="bvub-tag">Built</div>
+          <p class="bvub-name">이미 지어진 공간</p>
+          <p class="bvub-sub">→ <strong>?</strong></p>
+          <p class="bvub-note">이걸 어떻게 데이터로 옮길까?</p>
+        </div>
+      </div>
+      <p class="footnote">건축하는 입장 — 특히 설계하는 입장에서는 <em>unBuilt</em>에 대한 생각을 많이 할 수밖에 없습니다. 그런데 <em>Built</em> 쪽도 누가 풀어야 합니다.</p>
+
+      <aside class="notes">
+        지어진 / 지어지지 않은 의 대비. 이 대비가 voidbox의 출발선이다. 다음 슬라이드에서 Built 쪽의 답으로 3DGS 등장.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-5. 3D Gaussian Splatting -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">3D Gaussian Splatting</h2>
+      <div class="two-col">
+        <div class="col">
+          <p class="lead">이미 지어진 공간을 디지털화하는 기술은 여럿입니다 —<br>대표적으로 <strong>LiDAR 기반 3D 스캐닝</strong>.</p>
+          <p>여러 기술을 탐색한 끝에 우리가 고른 것은</p>
+          <p class="highlight">3D Gaussian Splatting (3DGS)</p>
+          <ul class="dot-list">
+            <li>여러 시점의 2D 이미지 → 3D 가우시안 타원체 추정</li>
+            <li>3D 모델 없이 <strong>시선들의 다발</strong>로부터 공간을 재구성</li>
+            <li>SIGGRAPH 2023 — 비교적 최근 기술이지만</li>
+            <li>연구 단계를 넘어 <strong>산업계에서도 쓰이기 시작</strong>한 성숙도</li>
+          </ul>
+        </div>
+        <div class="col img-col">
+          <div class="img-placeholder big"><span>[voidbox 3DGS<br>스캔 결과 이미지]</span></div>
+        </div>
+      </div>
+      <p class="footnote">Kerbl et al., "3D Gaussian Splatting for Real-Time Radiance Field Rendering", SIGGRAPH 2023.</p>
+
+      <aside class="notes">
+        LiDAR 등 대안과 비교해 3DGS를 고른 이유를 짧게. "사진 → 공간" 의 거리가 가장 짧다는 점.
+        이미지 자리에는 nubim.voidbox.ai 의 데모 캡처를 넣으면 좋음.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-6. 넓은 시장으로 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">넓은 시장으로 가자</h2>
+      <p class="lead">지향점이 생기고 나니 — "넓은 시장으로 가자" 하면서 기웃거리기 시작합니다.</p>
+      <div class="market-flow">
+        <div class="mf-node">네이버 부동산<br>직방<br><small>"손품"의 발명</small></div>
+        <div class="mf-plus">+</div>
+        <div class="mf-node missing">여전히 필요한<br><strong>"발품"</strong><br><small>직접 눈으로 보고 계약</small></div>
+        <div class="mf-arrow">→</div>
+        <div class="mf-node target">진정한 공간동기화 =<br><strong>원격 계약</strong><br><small>(아직 불가능)</small></div>
+      </div>
+      <p class="lead-em">진정한 공간동기화는 아직 불가능하니까,</p>
+      <p class="big-line" style="font-size: 1.4em;">먼저 <strong>"매물을 보여주는 것"</strong> 부터 하자.</p>
+
+      <aside class="notes">
+        의식의 흐름을 그대로 보여준다. "어디서 보고 들은 건 있어서" — 자조적으로.
+        다음 슬라이드에서 그 가설을 어떻게 검증했는지(Fakedoor) 풀어낸다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-7. Fakedoor + 공인중개사 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">Fakedoor 설계와 공인중개사 계약</h2>
+      <div class="two-col">
+        <div class="col">
+          <p>"이 기능이 진짜 필요한가?" 를 빨리 확인하기 위해,</p>
+          <p class="highlight">실제 동작하지 않는 진입점</p>
+          <p>— <strong>Fakedoor</strong> — 를 설계하고 시장의 반응을 봤습니다.</p>
+          <ul class="dot-list">
+            <li>공인중개사와의 협업 계약</li>
+            <li>실제 매물 데이터를 3DGS로 스캔</li>
+            <li>유저가 클릭·체류·문의로 신호를 보냄</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="img-placeholder big"><span>[Fakedoor<br>실험 화면 캡처]</span></div>
+        </div>
+      </div>
+      <p class="footnote">기술과 비즈니스 사이의 줄다리기 — 좋은 아이디어를 발산시키기보다, 핵심 아이디어를 <em>하나로 수렴</em>시키고 검증해보자.</p>
+
+      <aside class="notes">
+        Fakedoor 패턴을 모르는 청중을 위한 짧은 정의도 한 줄. "이 기능이 실제로 있다고 가정했을 때 사람들이 누를까?" 를 보는 실험.
+        결과는 어땠는지(까였는지 / 가능성을 봤는지) 강사 본인이 한두 줄 더 보강 가능.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-8. 다시 잡은 기회 — 연세대 MoU -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">그리고 다시 잡은 기회</h2>
+      <div class="mou-block">
+        <div class="mou-pillar">
+          <span class="mou-univ">연세대학교</span>
+          <span class="mou-x">×</span>
+          <span class="mou-co">voidbox</span>
+        </div>
+        <p class="mou-name">건축공학과 졸업전시 아카이빙 프로젝트 MoU</p>
+        <p class="mou-place">연세대학교 신촌캠퍼스 · 백양누리</p>
+      </div>
+      <ul class="dot-list" style="margin-top: 1.5em;">
+        <li><strong>아카이빙</strong> · <strong>전시 기획</strong> · <strong>동시 운영</strong>을 포함한 통합 협업</li>
+        <li>"동기화된 공간 위에 사건을 다시 불러오려는" 첫 번째 실험</li>
+      </ul>
+
+      <aside class="notes">
+        피벗의 결과로 잡은 첫 큰 협업. 졸업전시는 voidbox에게 데이터·실험·홍보 세 가지를 동시에 주는 자리.
+        다음 슬라이드에서 그 협업의 의미("전시 자체를 스캔한다") 로 들어간다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-9. 전시 사건 자체를 스캔 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">전시회라는 사건 자체를 스캔해보자</h2>
+      <div class="two-col">
+        <div class="col">
+          <p>지금까지의 3DGS — <strong>공간</strong>을 남긴다.</p>
+          <p>그런데 졸업전시에서 우리가 마주한 질문은,</p>
+          <p class="highlight">"공간은 보존된다.<br>그러나 사건은?"</p>
+          <p>발표 · 우연한 만남 · 오후의 빛 ·<br>작품 앞에서 누군가가 멈춰 선 5분.</p>
+        </div>
+        <div class="col">
+          <div class="compare-mini">
+            <div class="cm-row">
+              <span class="cm-tag">Archive</span>
+              <span class="cm-def">텍스트·이미지·물건·건물<br><em>지속되는 매체로 보존되는 지식</em></span>
+            </div>
+            <div class="cm-row">
+              <span class="cm-tag alt">Repertoire</span>
+              <span class="cm-def">몸짓·발화·의례·만남<br><em>체화된 실천으로만 전해지는 지식</em></span>
+            </div>
+          </div>
+          <p class="footnote">Diana Taylor, <em>The Archive and the Repertoire</em>, Duke UP, 2003.</p>
+        </div>
+      </div>
+      <p class="big-line" style="font-size: 1.3em; margin-top: 1em;">3DGS는 본성상 아카이브 매체인데,<br><strong>레퍼토리</strong>를 얹어볼 순 없을까?</p>
+
+      <aside class="notes">
+        이 슬라이드는 강의의 지적 클라이맥스. Diana Taylor 인용은 청중 수준에 맞춰 깊이 조절.
+        "공간은 남는다, 그러나 사건은?" — 이 한 문장이 voidbox 의 다음 챕터를 정의한다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-10. 졸업전시에서의 공간동기화 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">졸업전시회에서의 공간동기화</h2>
+      <div class="exhibition-grid">
+        <div class="ex-step">
+          <div class="ex-num">01</div>
+          <h4>공시적 통합</h4>
+          <p>동시에 진행되는 <strong>물리·가상 전시</strong>를 하나의 사건으로 묶을 수 있는가?</p>
+          <p class="ex-note">라이브 스트림은 비대칭 구조 — 두 공간이 <em>공동 저자</em>가 되는 구조는?</p>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">02</div>
+          <h4>통시적 영속성</h4>
+          <p>아카이브가 단순한 기념물이 아니라 <strong>계속되는 사건의 장</strong>이 되려면?</p>
+          <p class="ex-note">우리는 아카이브는 잘 만들지만 레퍼토리는 잃어버린다.</p>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">03</div>
+          <h4>보르헤스의 운명</h4>
+          <p>우리의 공간동기화는 1:1 지도를 완성하는가, 폐기하는가,<br>그 우화 바깥의 <strong>새 범주</strong>인가?</p>
+          <p class="ex-note">"우리의 지도는 무엇을 선택하는가?"</p>
+        </div>
+      </div>
+
+      <aside class="notes">
+        세미나에서 사용한 "세 가지 토론 질문" 을 그대로 청중에게 들이밀어도 좋은 자리.
+        강의이긴 하지만, 청중 중에 깊은 응답이 나올 만한 청중이 섞여 있다면 짧은 토론 시간 5분 정도 줘도 좋음.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-11. 처치곤란 대형 모델 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">처치곤란 대형 모델도 남겨볼 수 있을까?</h2>
+      <div class="two-col">
+        <div class="col">
+          <p>전시는 끝나고 — 그 자리에는 무엇이 남는가?</p>
+          <p class="highlight">대형 졸업작품 모형들.</p>
+          <p>전시 마지막 날, 학생들이 마주하는 현실 —</p>
+          <ul class="dot-list">
+            <li>버리기엔 아깝고</li>
+            <li>옮기기엔 너무 크고</li>
+            <li>보관할 곳이 없고</li>
+          </ul>
+          <p class="lead-em">그렇다면 — <strong>모형을 스캔으로 남겨드리면?</strong></p>
+        </div>
+        <div class="col">
+          <div class="img-placeholder big"><span>[대형 모형<br>3DGS 스캔 예시]</span></div>
+        </div>
+      </div>
+      <p class="footnote">아카이빙의 두 번째 의미 — 사라지는 것을 데이터로 붙잡아두는 일.</p>
+
+      <aside class="notes">
+        실용적인 가치를 한 번 더 짚는 슬라이드. 추상적인 "아카이브 vs 레퍼토리" 토론에서 한 발 내려와, 청중에게 손에 잡히는 사례를 보여준다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-12. 원가절감과 앞으로의 길 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a">
+      <h2 class="section-title">원가절감을 위한 노력과<br>voidbox가 앞으로 가야 할 길</h2>
+      <div class="roadmap-grid">
+        <div class="rm-block">
+          <h4>NOW · 원가절감</h4>
+          <ul class="dot-list">
+            <li>스캔 워크플로우 자동화</li>
+            <li>처리 파이프라인 단축</li>
+            <li>장비·시간 비용의 감축</li>
+          </ul>
+        </div>
+        <div class="rm-block">
+          <h4>NEXT · 레퍼토리</h4>
+          <ul class="dot-list">
+            <li>공간에 <strong>사건</strong>을 얹는 방법</li>
+            <li>동기화 가능한 라이브 레이어</li>
+            <li>아카이빙 + 운영을 한 플랫폼으로</li>
+          </ul>
+        </div>
+        <div class="rm-block">
+          <h4>LATER · 시장</h4>
+          <ul class="dot-list">
+            <li>건축·전시·교육·부동산</li>
+            <li>스캔의 단가가 충분히 낮아지는 순간,<br>"발품"은 어디까지 옮겨질까?</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="notes">
+        앞으로의 로드맵을 세 박스로 정리. "지금은 원가를 깎고, 다음은 레퍼토리를 얹고, 멀리는 시장으로." 톤은 차분하게.
+        강사의 본심 한 줄로 마무리 — "voidbox는 사건이 거세된 공간만을 만드는 회사로 남고 싶지 않다."
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2-13. Q&A -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a" class="qna">
+      <h1 class="title small" style="text-align: center;">Q &amp; A</h1>
+      <p class="closing-line" style="text-align: center;">무엇이든 물어보세요.</p>
+
+      <aside class="notes">
+        Q&amp;A. 청중에서 질문이 안 나오면 강사가 "오늘 들으면서 떠오른 다른 산업의 사례가 있다면?" 같은 가벼운 발문으로 한 번 열어준다.
+      </aside>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 클로징 -->
+    <!-- ============================================================ -->
+    <section data-background-color="#0a0a0a" class="closing">
+      <h1 class="title small">감사합니다</h1>
+      <p class="closing-line">노혁진 · Founder, voidbox</p>
+      <p class="closing-line">hyeogjin.noh@voidbox.ai</p>
+      <p class="closing-line">voidbox.ai · <a href="https://nubim.voidbox.ai">nubim.voidbox.ai</a></p>
+      <div class="closing-cta">
+        <p>📷 voidbox <strong>Instagram</strong> 팔로우 부탁드립니다.</p>
+        <p>🎓 곧 다가올 <strong>연세대 · 서울대 졸업전시</strong>를 보시게 된다면,<br>
+        voidbox와 함께하는 <strong>온라인 전시</strong>도 많이 찾아와 주세요!</p>
+      </div>
+
+      <aside class="notes">
+        마무리. 인스타·졸업전시 홍보. 한 호흡 깊게 두고 "오늘 이야기 중 한 줄이라도 가져가 주시면 감사하겠습니다." 정도로 닫는다.
+      </aside>
+    </section>
+
+  </div>
+</div>
+
+<!-- reveal.js -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    // 16:9 — slide은 1920×1080 좌표계 안에서 작성하고
+    // reveal이 viewport에 맞춰 transform:scale 로 자동 축소/확대한다.
+    width: 1920,
+    height: 1080,
+    // 네 모퉁이 안전 여백 (slide width 대비 비율)
+    margin: 0.05,
+    minScale: 0.2,
+    maxScale: 2.0,
+    // 세로 가운데 정렬 OFF — 제목 위치를 모든 슬라이드에서 동일하게 고정하기 위해
+    center: false,
+    plugins: [ RevealNotes, RevealHighlight, RevealMarkdown ]
+  });
+</script>
+</body>
+</html>
